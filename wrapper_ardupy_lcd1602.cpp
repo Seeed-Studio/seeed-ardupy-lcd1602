@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Author: PowerfulCat (x4495@outlook.com)
+ * Author: PowerfulCat (x4495@outlook.com) & Hongtai.liu (lht856@foxmail.com)
  *
  * Copyright (C) 2020  Seeed Technology Co.,Ltd.
  *
@@ -26,7 +26,7 @@
 
 #include <Arduino.h>
 #define private public
-#include "Seeed_Arduino_1602LCD/rgb_lcd.h"
+#include "Seeed_Arduino_LCD1602/rgb_lcd.h"
 
 extern "C"{
 #include "py/objtype.h"
@@ -37,32 +37,32 @@ extern "C"{
 void * operator new(size_t, void *);
 
 extern "C"{
-    void common_hal_lcd_construct(abstract_module_t * self){
+    void common_hal_lcd1602_construct(abstract_module_t * self){
         self->module = new(m_new_obj(rgb_lcd)) rgb_lcd;
         lcd.begin(16, 2); //column row
     }
-    void common_hal_lcd_deinit(abstract_module_t * self){
+    void common_hal_lcd1602_deinit(abstract_module_t * self){
         lcd.~rgb_lcd();
     }
-    void common_hal_lcd_clear(abstract_module_t * self){
+    void common_hal_lcd1602_clear(abstract_module_t * self){
         lcd.clear();
     }
-    void common_hal_lcd_set_cursor(abstract_module_t * self, uint32_t column, uint32_t row){
+    void common_hal_lcd1602_set_cursor(abstract_module_t * self, uint32_t column, uint32_t row){
         lcd.setCursor(column, row);
     }
-    void common_hal_lcd_print_int(abstract_module_t * self, int32_t value){
+    void common_hal_lcd1602_print_int(abstract_module_t * self, int32_t value){
         lcd.print(value);
     }
-    void common_hal_lcd_print_float(abstract_module_t * self, float value){
+    void common_hal_lcd1602_print_float(abstract_module_t * self, float value){
         lcd.print(value);
     }
-    void common_hal_lcd_print_string(abstract_module_t * self, const char * value){
+    void common_hal_lcd1602_print_string(abstract_module_t * self, const char * value){
         lcd.print(value);
     }
-    void common_hal_lcd_set_is_blink_cursor(abstract_module_t * self, bool value){
+    void common_hal_lcd1602_set_is_blink_cursor(abstract_module_t * self, bool value){
         value ? lcd.blink() : lcd.noBlink();
     }
-    bool common_hal_lcd_get_is_blink_cursor(abstract_module_t * self){
+    bool common_hal_lcd1602_get_is_blink_cursor(abstract_module_t * self){
         return (lcd._displaycontrol & LCD_BLINKON) != 0;
     }
 }
