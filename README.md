@@ -10,7 +10,7 @@ You can get more information in here [Grove - LCD RGB Backlight](https://wiki.se
 
 ## How to binding with ArduPy
 - Install [AIP](https://github.com/Seeed-Studio/ardupy-aip)
-```
+```shell
 pip3 install aip
 ```
 - Build firmware with Seeed ArduPy LCD1602
