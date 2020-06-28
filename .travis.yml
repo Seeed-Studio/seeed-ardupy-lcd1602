@@ -1,12 +1,13 @@
 language: generic
+dist: bionic
 global:
   - CLIVERSION=0.7.2
 matrix:
   include:
     - env:
-        - BOARD="Seeeduino:samd:zero"
+        - BOARD="xiao"
     - env:
-        - BOARD="Seeeduino:samd:seeed_wio_terminal"
+        - BOARD="wio_terminal"
 
 before_install:
   - sudo apt-get install --reinstall python3-pip
@@ -20,7 +21,7 @@ install:
 script: 
   - echo "CI Test"
   - aip install  Seeed-Studio/seeed-ardupy-lcd1602
-  - aip build 
+  - aip build --board=$BOARD
   
 notifications:
   webhooks:
